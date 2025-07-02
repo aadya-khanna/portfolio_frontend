@@ -8,24 +8,19 @@ import { useEffect } from 'react';
 
 
 export default function Home() {
-  useEffect(() => {
-    const hash = window.location.hash;
+    const hash = window.location.hash.substring(1);
+    if (!hash) return;
 
-    if (hash) {
-      const params = new URLSearchParams(hash.substring(1));
-      const accessToken = params.get("access_token");
-      const refreshToken = params.get("refresh_token");
+    const params = new URLSearchParams(hash);
+    const accessToken = params.get("access_token");
+    const refreshToken = params.get("refresh_token");
+    const state = params.get("state");
 
-      if (accessToken) {
-        // Store token for later use
-        localStorage.setItem("spotify_access_token", accessToken);
-        if (refreshToken) {
-          localStorage.setItem("spotify_refresh_token", refreshToken);
-        }
+    if (accessToken) {
+      localStorage.setItem("spotify_access_token", accessToken);
+      if (refreshToken) localStorage.setItem("spotify_refresh_token", refreshToken);
 
-        // ✅ Remove hash from URL without reloading
-        window.history.replaceState(null, "", window.location.pathname);
-      }
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
   }, []);
   
