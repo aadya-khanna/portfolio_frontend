@@ -13,6 +13,7 @@ export default function App() {
       <CustomCursor />   
       
       <Routes>
+        <Route path="/" element={<Navigate to="/about" replace />} />
         <Route path="/about" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/experience" element={<Experience />} />
