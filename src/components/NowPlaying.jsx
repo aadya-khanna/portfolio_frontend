@@ -8,8 +8,7 @@ const NowPlaying = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [accessToken, setAccessToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(null);
+  // Removed client-side token state
   const [displayMode, setDisplayMode] = useState('currently-playing');
   const [rotation, setRotation] = useState(0);
 
@@ -35,134 +34,72 @@ const NowPlaying = () => {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
-  // Initialize Spotify tokens from URL hash or localStorage
-  useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    const params = new URLSearchParams(hash);
+  // Removed client-side token initialization and storage effects
 
-    const token = params.get('access_token');
-    const refresh = params.get('refresh_token');
-
-    if (token) {
-      setAccessToken(token);
-      setRefreshToken(refresh);
-      // Clean URL
-      window.history.pushState({}, document.title, window.location.pathname);
-    } else {
-      // Try localStorage tokens
-      const storedAccessToken = localStorage.getItem('spotify_access_token');
-      const storedRefreshToken = localStorage.getItem('spotify_refresh_token');
-
-      if (storedAccessToken) {
-        setAccessToken(storedAccessToken);
-        setRefreshToken(storedRefreshToken);
-      } else {
-        // No tokens found — don't redirect, just show no recent activity
-        console.log('No Spotify tokens found. Not redirecting.');
-      }
-    }
-  }, []);
-
-  // Store tokens in localStorage when they change
-  useEffect(() => {
-    if (accessToken) {
-      localStorage.setItem('spotify_access_token', accessToken);
-    }
-    if (refreshToken) {
-      localStorage.setItem('spotify_refresh_token', refreshToken);
-    }
-  }, [accessToken, refreshToken]);
-
-  // Fetch currently playing track
+  // Fetch currently playing track from backend
   const fetchNowPlaying = async () => {
-    if (!accessToken) {
-      setIsLoading(false);
-      return; // no token, skip fetch
-    }
-
+    console.log('NowPlaying: Attempting to fetch currently playing from backend...');
     setIsLoading(true);
     try {
-      const response = await fetch(
-        `${BACKEND_URL}/currently-playing?access_token=${accessToken}`
-      );
+      const response = await fetch(`${BACKEND_URL}/currently-playing`);
 
+      console.log('NowPlaying: Currently playing backend response status:', response.status);
       if (response.ok) {
         const data = await response.json();
+        console.log('NowPlaying: Currently playing backend data:', data);
         if (data.item) {
           setTrack(data.item);
           setIsPlaying(data.is_playing);
           setDisplayMode('currently-playing');
         } else {
+          console.log('NowPlaying: No currently playing item from backend, falling back to recently played.');
           // fallback to recently played if no current track
-          fetchRecentlyPlayed();
+           fetchRecentlyPlayed();
         }
-      } else if (response.status === 401) {
-        // Unauthorized, try refresh token
-        await refreshAccessToken();
       } else {
-        setError('Failed to fetch currently playing track');
-        setIsLoading(false);
+        console.error('NowPlaying: Failed to fetch currently playing track from backend. Status:', response.status);
+        // If backend returns an error (e.g., 401 if no valid tokens server-side)
+        // we should still try recently played as a fallback
+         fetchRecentlyPlayed();
       }
     } catch (err) {
+      console.error('NowPlaying: Error fetching currently playing from backend:', err);
       setError(err.message);
       setIsLoading(false);
     }
   };
 
-  // Fetch recently played tracks fallback
+  // Fetch recently played tracks from backend fallback
   const fetchRecentlyPlayed = async () => {
-    if (!accessToken) return;
-
+    console.log('NowPlaying: Attempting to fetch recently played from backend...');
     try {
-      const response = await fetch(
-        `${BACKEND_URL}/recently-played?access_token=${accessToken}`
-      );
+      const response = await fetch(`${BACKEND_URL}/recently-played`);
+      console.log('NowPlaying: Recently played backend response status:', response.status);
       if (response.ok) {
         const data = await response.json();
+        console.log('NowPlaying: Recently played backend data:', data);
         if (data.items && data.items.length > 0) {
+          console.log('NowPlaying: Recently played track found.');
           setTrack(data.items[0].track);
           setIsPlaying(false);
           setDisplayMode('last-played');
         } else {
+          console.log('NowPlaying: No recently played tracks found from backend.');
           setTrack(null);
         }
+      } else {
+         console.error('NowPlaying: Failed to fetch recently played track from backend. Status:', response.status);
+         setTrack(null); // Ensure track is null if both fail
       }
     } catch (err) {
-      console.error('Error fetching recently played:', err);
+      console.error('NowPlaying: Error fetching recently played from backend:', err);
+      setTrack(null); // Ensure track is null on error
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Refresh access token
-  const refreshAccessToken = async () => {
-    if (!refreshToken) {
-      // no refresh token, cannot refresh, just stop here
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `${BACKEND_URL}/refresh_token?refresh_token=${refreshToken}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setAccessToken(data.access_token);
-        await fetchNowPlaying();
-      } else {
-        // refresh failed, clear tokens
-        setAccessToken(null);
-        setRefreshToken(null);
-        localStorage.removeItem('spotify_access_token');
-        localStorage.removeItem('spotify_refresh_token');
-        setIsLoading(false);
-      }
-    } catch (err) {
-      console.error('Error refreshing token:', err);
-      setIsLoading(false);
-    }
-  };
+  // Removed client-side refreshAccessToken function
 
   // Poll every 30 seconds
   useEffect(() => {
@@ -172,7 +109,7 @@ const NowPlaying = () => {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, [accessToken]);
+  }, []); // Dependency array is now empty as it doesn't depend on accessToken
 
   if (isLoading && !track) {
     return (
