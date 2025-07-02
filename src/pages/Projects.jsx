@@ -36,7 +36,7 @@ export default function Home() {
 
             <Card
               title="FlareRed"
-              description="Women's Safety App that provides real-time location sharing to emergency contacts, disguising as a health app."
+              description="Women's travel safety app, disguised as a health application, that provides real-time location sharing to emergency contacts"
               tech={['Figma', 'Tailwind', 'HTML', 'JavaScript', 'Lottie']}
               github="https://github.com/aadya-khanna/FlareRed"
               site="https://flarered.vercel.app"

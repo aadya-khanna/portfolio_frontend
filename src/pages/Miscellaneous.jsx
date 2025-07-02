@@ -125,7 +125,7 @@ export default function Misc() {
               </div>
 
               <div className="flex justify-between items-start gap-4 pt-2 px-4">
-                <p className="text-base font-plein"> My musical journey began 10 years ago, but it only became a constant during the pandemic. I've played lead guitarist in two different bands (shoutout Karma and Mother Goose) for 5 years. 
+                <p className="text-base font-plein"> My musical journey began 10 years ago, but it only became a constant during the pandemic. I've played lead guitarist in two different bands (shoutout Mother Goose and Karma) for 5 years. 
                   Musically, I love improvising (jazz, blues and rock are my forte). I have an instagram account @_jazzzba_ where I post covers and explorations. 
                   If you're a fellow music nerd or should I say audiophile, don't hesitate to reach out or even recommend me some new music!
                 </p>
