@@ -61,7 +61,7 @@ export default function Experience() {
               </div>
               <h2 className="text-lg font-plein"> 2024-25</h2>
             </div>
-            <h2 className="text-lg font-plein pt-2"> making EurekaHACKS the coolest highschool hackathon in the Canada </h2>
+            <h2 className="text-lg font-plein pt-2"> making EurekaHACKS the coolest highschool hackathon in Canada </h2>
 
             <div className="flex justify-between items-start gap-4 pt-10">
               <div className="flex items-start gap-3">
