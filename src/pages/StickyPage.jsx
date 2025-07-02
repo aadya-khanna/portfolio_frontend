@@ -8,9 +8,13 @@ export default function StickyPage() {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes`);
+      const apiUrl = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes`;
+      console.log('Frontend: Fetching notes from:', apiUrl);
+      const response = await fetch(apiUrl);
+      console.log('Frontend: Fetch notes response status:', response.status);
       if (response.ok) {
         const data = await response.json();
+        console.log('Frontend: Fetched notes data:', data);
         setNotes(data);
       } else {
         console.error('Frontend: Failed to fetch notes:', response.status, response.statusText);
@@ -26,15 +30,19 @@ export default function StickyPage() {
 
   const handlePostNote = async (noteText) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes`, {
+      const apiUrl = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes`;
+      console.log('Frontend: Posting note to:', apiUrl, 'with text:', noteText);
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ text: noteText }),
       });
+      console.log('Frontend: Post note response status:', response.status);
 
       if (response.ok) {
+        console.log('Frontend: Note posted successfully.');
         fetchNotes();
       } else {
         console.error('Frontend: Failed to post note:', response.status, response.statusText);
@@ -43,19 +51,22 @@ export default function StickyPage() {
       console.error('Frontend: Error posting note:', error);
     }
   };
-  console.log(import.meta.env.VITE_DELETE_SECRET);
 
   const handleDeleteNote = async (noteId) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes/${noteId}`, {
+      const apiUrl = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes/${noteId}`;
+      console.log('Frontend: Deleting note with ID:', noteId, 'from:', apiUrl);
+      const response = await fetch(apiUrl, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ deleteSecret: import.meta.env.VITE_DELETE_SECRET }), 
+        body: JSON.stringify({ deleteSecret: import.meta.env.VITE_DELETE_SECRET }),
       });
+      console.log('Frontend: Delete note response status:', response.status);
 
       if (response.ok) {
+        console.log('Frontend: Note deleted successfully.');
         fetchNotes();
       } else {
         console.error('Frontend: Failed to delete note:', response.status, response.statusText);
