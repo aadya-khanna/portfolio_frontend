@@ -3,19 +3,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StickyNote from '../components/Stickies';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8888";
-
-if (!BACKEND_URL) {
-  console.error("Missing BACKEND_URL! Set VITE_BACKEND_URL in your environment variables.");
-}
-
-
 export default function StickyPage() {
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/notes`); 
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes`);
       if (response.ok) {
         const data = await response.json();
         setNotes(data);
@@ -33,7 +26,7 @@ export default function StickyPage() {
 
   const handlePostNote = async (noteText) => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/notes`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +47,7 @@ export default function StickyPage() {
 
   const handleDeleteNote = async (noteId) => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/notes/${noteId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/api/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

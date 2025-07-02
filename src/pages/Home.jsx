@@ -28,7 +28,7 @@ export default function Home() {
     // After processing, check if we now have a token
     const token = localStorage.getItem("spotify_access_token");
     if (!token) {
-      window.location.href = `${BACKEND_URL}/login`;
+      // window.location.href = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:8888"}/login`;
     }
   }, []);
   
