@@ -1,4 +1,6 @@
 import React from "react";
+import 'remixicon/fonts/remixicon.css';
+
 
 export default function ProjectCard({ title, description, tech, github, site, youtube }) 
 {

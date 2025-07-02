@@ -116,7 +116,7 @@ export default function Misc() {
               </div>
 
               <div className="flex justify-between items-start gap-4 px-4">
-                  <h2 className="text-lg font-plein"> ensuring my creative juices don't run up :) </h2>
+                  <h2 className="text-lg font-plein"> ensuring my creative juices don't run out :) </h2>
               </div>
 
             {/* Music */}

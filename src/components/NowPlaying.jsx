@@ -8,7 +8,6 @@ const NowPlaying = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  // Removed client-side token state
   const [displayMode, setDisplayMode] = useState('currently-playing');
   const [rotation, setRotation] = useState(0);
 
