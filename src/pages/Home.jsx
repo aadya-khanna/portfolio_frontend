@@ -4,8 +4,31 @@ import AadyaSvg from  '../components/AadyaSvg';
 import TypedText from '../components/Typed';
 import NowPlaying from '../components/NowPlaying';
 import { InstagramIcon, LinkedInIcon, GitHubIcon, EmailIcon } from '../components/Icons';
+import { useEffect } from 'react';
+
 
 export default function Home() {
+  useEffect(() => {
+    const hash = window.location.hash;
+
+    if (hash) {
+      const params = new URLSearchParams(hash.substring(1));
+      const accessToken = params.get("access_token");
+      const refreshToken = params.get("refresh_token");
+
+      if (accessToken) {
+        // Store token for later use
+        localStorage.setItem("spotify_access_token", accessToken);
+        if (refreshToken) {
+          localStorage.setItem("spotify_refresh_token", refreshToken);
+        }
+
+        // ✅ Remove hash from URL without reloading
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    }
+  }, []);
+  
   return (
     <div className="min-h-screen bg-background text-foreground dark:bg-background-dark dark:text-foreground-dark">
       <Header />
