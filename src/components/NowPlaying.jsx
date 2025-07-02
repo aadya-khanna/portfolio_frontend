@@ -38,21 +38,21 @@ const NowPlaying = () => {
 
   // Fetch currently playing track from backend
   const fetchNowPlaying = async () => {
-    console.log('NowPlaying: Attempting to fetch currently playing from backend...');
+    // console.log('NowPlaying: Attempting to fetch currently playing from backend...'); // Removed log
     setIsLoading(true);
     try {
       const response = await fetch(`${BACKEND_URL}/currently-playing`);
-
-      console.log('NowPlaying: Currently playing backend response status:', response.status);
+ 
+      // console.log('NowPlaying: Currently playing backend response status:', response.status); // Removed log
       if (response.ok) {
         const data = await response.json();
-        console.log('NowPlaying: Currently playing backend data:', data);
+        // console.log('NowPlaying: Currently playing backend data:', data); // Removed log
         if (data.item) {
           setTrack(data.item);
           setIsPlaying(data.is_playing);
           setDisplayMode('currently-playing');
         } else {
-          console.log('NowPlaying: No currently playing item from backend, falling back to recently played.');
+          // console.log('NowPlaying: No currently playing item from backend, falling back to recently played.'); // Removed log
           // fallback to recently played if no current track
            fetchRecentlyPlayed();
         }
@@ -68,29 +68,29 @@ const NowPlaying = () => {
       setIsLoading(false);
     }
   };
-
+ 
   // Fetch recently played tracks from backend fallback
   const fetchRecentlyPlayed = async () => {
-    console.log('NowPlaying: Attempting to fetch recently played from backend...');
+    // console.log('NowPlaying: Attempting to fetch recently played from backend...'); // Removed log
     try {
       const response = await fetch(`${BACKEND_URL}/recently-played`);
-      console.log('NowPlaying: Recently played backend response status:', response.status);
+      // console.log('NowPlaying: Recently played backend response status:', response.status); // Removed log
       if (response.ok) {
         const data = await response.json();
-        console.log('NowPlaying: Recently played backend data:', data);
+        // console.log('NowPlaying: Recently played backend data:', data); // Removed log
         if (data.items && data.items.length > 0) {
-          console.log('NowPlaying: Recently played track found.');
+          // console.log('NowPlaying: Recently played track found.'); // Removed log
           setTrack(data.items[0].track);
           setIsPlaying(false);
           setDisplayMode('last-played');
         } else {
-          console.log('NowPlaying: No recently played tracks found from backend.');
+          // console.log('NowPlaying: No recently played tracks found from backend.'); // Removed log
           setTrack(null);
         }
       } else {
          console.error('NowPlaying: Failed to fetch recently played track from backend. Status:', response.status);
          setTrack(null); // Ensure track is null if both fail
-      }
+       }
     } catch (err) {
       console.error('NowPlaying: Error fetching recently played from backend:', err);
       setTrack(null); // Ensure track is null on error
