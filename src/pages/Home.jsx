@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 
 
 export default function Home() {
+    useEffect(() => {
+    // Grab the hash string from URL (without #)
     const hash = window.location.hash.substring(1);
     if (!hash) return;
 
@@ -17,9 +19,11 @@ export default function Home() {
     const state = params.get("state");
 
     if (accessToken) {
+      // Store tokens however you like
       localStorage.setItem("spotify_access_token", accessToken);
       if (refreshToken) localStorage.setItem("spotify_refresh_token", refreshToken);
 
+      // Clean up URL to remove tokens from the address bar
       window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
   }, []);
