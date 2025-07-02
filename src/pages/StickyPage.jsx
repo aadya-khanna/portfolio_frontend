@@ -5,6 +5,11 @@ import StickyNote from '../components/Stickies';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8888";
 
+if (!BACKEND_URL) {
+  console.error("Missing BACKEND_URL! Set VITE_BACKEND_URL in your environment variables.");
+}
+
+
 export default function StickyPage() {
   const [notes, setNotes] = useState([]);
 

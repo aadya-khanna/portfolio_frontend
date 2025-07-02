@@ -8,23 +8,27 @@ import { useEffect } from 'react';
 
 
 export default function Home() {
-    useEffect(() => {
-    // Grab the hash string from URL (without #)
+  useEffect(() => {
     const hash = window.location.hash.substring(1);
-    if (!hash) return;
-
     const params = new URLSearchParams(hash);
     const accessToken = params.get("access_token");
     const refreshToken = params.get("refresh_token");
-    const state = params.get("state");
-
+  
     if (accessToken) {
-      // Store tokens however you like
+      // Store tokens from hash
       localStorage.setItem("spotify_access_token", accessToken);
-      if (refreshToken) localStorage.setItem("spotify_refresh_token", refreshToken);
-
-      // Clean up URL to remove tokens from the address bar
+      if (refreshToken) {
+        localStorage.setItem("spotify_refresh_token", refreshToken);
+      }
+  
+      // Remove tokens from URL
       window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  
+    // After processing, check if we now have a token
+    const token = localStorage.getItem("spotify_access_token");
+    if (!token) {
+      window.location.href = `${BACKEND_URL}/login`;
     }
   }, []);
   
