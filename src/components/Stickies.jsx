@@ -20,15 +20,6 @@ const StickyNote = ({ note, onPost, onDelete }) => {
     return (
         <div className="bg-accent font-plein p-4 rounded shadow relative">
           <div className="text-foreground">{note.text}</div> {}
-          {import.meta.env.VITE_DELETE_SECRET && (
-              <button
-              className="absolute top-0 left-1 text-red-500 hover:text-red-700"
-              onClick={handleDelete}
-              aria-label="Delete note"
-            >
-              &times; {}
-            </button>
-          )}
         </div>
     );
   } else {
