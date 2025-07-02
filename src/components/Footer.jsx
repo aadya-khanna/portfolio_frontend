@@ -5,7 +5,7 @@ export default function Footer() {
     return (
       <footer className="flex flex-col items-center justify-center pb-2">
         <div className="text-foreground dark:text-foreground-dark">
-          <p className="font-gambetta font-semibold text-base">Made with  <HeartIcon className="text-accent w-7 h-7"/> by Aadya</p>
+          <p className="font-gambetta font-semibold text-base flex items-center justify-center gap-1">Made with <HeartIcon className="text-accent w-5 h-5"/> by Aadya</p>
         </div> 
   
         <div className="flex items-center gap-2 pt-2 text-2xl">
