@@ -92,7 +92,10 @@ export default function Home() {
           </div>
         </div>
 
-        <Footer />
+        <div className='pt-12'> 
+          <Footer />
+        </div>
+        
       </main>
     </div>
   );
