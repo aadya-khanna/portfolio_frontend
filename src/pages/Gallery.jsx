@@ -56,14 +56,14 @@ export default function Gallery() {
   }, []);
 
   const images = [
-    { src: "/gallery/budapest.jpg", alt: "Photo 1", caption: "Budapest, Hungary" },
+    { src: "/gallery/budapest.JPG", alt: "Photo 1", caption: "Budapest, Hungary" },
     { src: "/gallery/croatia.jpg", alt: "Photo 2", caption: "Dubrovnik, Croatia" },
-    { src: "/gallery/eureka.jpg", alt: "Photo 3", caption: "EurekaHACKS 2025" },
+    { src: "/gallery/eureka.JPG", alt: "Photo 3", caption: "EurekaHACKS 2025" },
     { src: "/gallery/fifth.jpg", alt: "Photo 4", caption: "Graduation" },
     { src: "/gallery/first.jpg", alt: "Photo 5", caption: "Battle of the Bands" },
-    { src: "/gallery/food.jpg", alt: "Photo 6", caption: "Gluttony @Kerr Street Cafe" },
+    { src: "/gallery/food.JPG", alt: "Photo 6", caption: "Gluttony @Kerr Street Cafe" },
     { src: "/gallery/fourth.jpg", alt: "Photo 7", caption: "Prom" },
-    { src: "/gallery/karma.jpg", alt: "Photo 8", caption: "Karma @ISP" },
+    { src: "/gallery/karma.JPG", alt: "Photo 8", caption: "Karma @ISP" },
     { src: "/gallery/park.jpg", alt: "Photo 9", caption: "Bike Ride!" },
     { src: "/gallery/port.JPG", alt: "Photo 10", caption: "Lisbon, Portugal" },
     { src: "/gallery/port2.jpg", alt: "Photo 11", caption: "Sunset in Lisbon" },
