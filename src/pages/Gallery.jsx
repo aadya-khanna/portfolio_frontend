@@ -75,6 +75,10 @@ export default function Gallery() {
     { src: "/gallery/htn.jpg", alt: "Photo 17", caption: "Hack the North 2024"},
     { src: "/gallery/toronto.jpg", alt: "Photo 18", caption: "CN, Toronto" },
     { src: "/gallery/nightwalk.jpg", alt: "Photo 19", caption: "Lakeshore at night, Etobicoke" },
+    { src: "/gallery/JamHacks.jpg", alt: "Photo 20", caption: "Jam Hacks!" },
+    { src: "/gallery/fancycar.jpg", alt: "Photo 21", caption: "Porche avec les arbres" },
+    { src: "/gallery/poutzin.jpg", alt: "Photo 22", caption: "Aadya's spirit animal" },
+
   ];
 
   const rows = chunkImages(images, screenWidth); 
