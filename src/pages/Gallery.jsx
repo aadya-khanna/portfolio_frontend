@@ -69,7 +69,11 @@ export default function Gallery() {
     { src: "/gallery/port2.jpg", alt: "Photo 11", caption: "Sunset in Lisbon" },
     { src: "/gallery/prag.jpg", alt: "Photo 12", caption: "Malostranska, Praha" },
     { src: "/gallery/seniorsun.jpg", alt: "Photo 13", caption: "Senior Sunset" },
-    { src: "/gallery/third.jpg", alt: "Photo 14", caption: "Pump Before Prom" },
+    { src: "/gallery/veda@uw.jpg", alt: "Photo 14", caption: "Pump Before Prom" },  
+    { src: "/gallery/springfling.jpg", alt: "Photo 15", caption: "Slightly annoyed @Spring Fling" },  
+    { src: "/gallery/htn.jpg", alt: "Photo 16", caption: "Hack the North 2024"},
+    { src: "/gallery/toronto.jpg", alt: "Photo 17", caption: "CN, Toronto" },
+    { src: "/gallery/nightwalk.jpg", alt: "Photo 18", caption: "Lakeshore at night, Etobicoke" },
   ];
 
   const rows = chunkImages(images, screenWidth); 
