@@ -50,7 +50,7 @@ export default function Home() {
               <a href="https://www.instagram.com/_jazzzba_/" target="_blank" rel="noopener noreferrer">
                 <InstagramIcon className="w-7 h-7 hover:text-accent" />
               </a>
-              <a href="https://www.linkedin.com/in/aadya-khanna-050342293/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/aadya-khanna/" target="_blank" rel="noopener noreferrer">
                 <LinkedInIcon className="w-7 h-7 hover:text-accent" />
               </a>
               <a href="https://github.com/aadya-khanna" target="_blank" rel="noopener noreferrer">
