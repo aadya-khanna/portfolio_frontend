@@ -47,7 +47,7 @@ export default function Home() {
             </h2>
 
             <div className="flex space-x-7 pt-3">
-              <a href="https://www.instagram.com/_jazzzba_/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/_mangocheese_/" target="_blank" rel="noopener noreferrer">
                 <InstagramIcon className="w-7 h-7 hover:text-accent" />
               </a>
               <a href="https://www.linkedin.com/in/aadya-khanna/" target="_blank" rel="noopener noreferrer">
