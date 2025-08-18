@@ -56,7 +56,7 @@ export default function Home() {
               <a href="https://github.com/aadya-khanna" target="_blank" rel="noopener noreferrer">
                 <GitHubIcon className="w-7 h-7 hover:text-accent" />
               </a>
-              <a href="mailto:aadya.khanna@uwaterloo.ca">
+              <a href="mailto:a55khann@uwaterloo.ca">
                 <EmailIcon className="w-7 h-7 hover:text-accent" />
               </a>
             </div>
