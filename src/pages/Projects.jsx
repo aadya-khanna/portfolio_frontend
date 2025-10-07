@@ -27,9 +27,9 @@ export default function Home() {
 
           <Card
               title="FakeSeek"
-              description="A way to spot deepfakes before they spot you."
+              description="A web app that empowers users to protect their digital identity by scanning the web for manipulated media and impersonation risks, and providing insights to enhance their online security."
               tech={['Python','TypeScript','React', 'Node.js', 'MongoDB', 'Gemini', 'Tailwind']}
-              github="https://github.com/apun16/FakeSeek%2E"
+              github="https://github.com/apun16/FakeSeek."
               site=""
               youtube="https://youtu.be/f2p4Meo1NoI" 
             />
@@ -45,7 +45,7 @@ export default function Home() {
 
             <Card
               title="FlareRed"
-              description="Women's travel safety app, disguised as a health application, that provides real-time location sharing to emergency contacts"
+              description="Women's travel safety app, disguised as a health application, that provides real-time location sharing to emergency contacts."
               tech={['Figma', 'Tailwind', 'HTML', 'JavaScript', 'Lottie']}
               github="https://github.com/aadya-khanna/FlareRed"
               site="https://flarered.vercel.app"
