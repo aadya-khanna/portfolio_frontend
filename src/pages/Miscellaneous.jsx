@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import React from "react";
 import AlbumCard from "../components/AlbumCard";
+import DesignImageCard from "../components/DesignImageCard";
 
 export default function Misc() {
   const albums = [
@@ -85,6 +86,39 @@ export default function Misc() {
       artist: "Deftones",
       image: "/albums/koi-no-yokan.jpg",
     },
+  ];
+
+  const designImages = [
+    {
+      src: "/design/aadyacollage.png",
+      alt: "Make it Move collage",
+      description: "\"Take a break, maybe a trip to the moon will help.\""
+    },
+    {
+      src: "/design/aadyaposter1.png",
+      alt: "Poster 1",
+      description: "\"Hire me, I'm an amazing personal photographer!\""
+    },
+    {
+      src: "/design/aadyaposter2.png",
+      alt: "Poster 2",
+      description: "Looking for an expert photographer and editor? You know where to find me..."
+    },
+    {
+      src: "/design/predlogos.png",
+      alt: "Predator Logos",
+      description: "Who doesn't like a good geometric logo once in a while?"
+    },
+    {
+      src: "/design/predators.png",
+      alt: "Predators Brand",
+      description: "Props to grade 8 me for this one."
+    },
+    {
+      src: "/design/dum.png",
+      alt: "AMONGUS?",
+      description: "AMONGUS!?"
+    }
   ];
 
   return (
@@ -211,37 +245,43 @@ export default function Misc() {
               <div className="sm:w-full w-3/4 pt-12 pb-10 px-4 sm:px-8 mx-auto">
                 <div className="flex flex-col items-center">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <img
-                      src="/design/aadyacollage.png"
-                      alt="Make it Move collage"
+                    <DesignImageCard
+                      src={designImages[0].src}
+                      alt={designImages[0].alt}
+                      description={designImages[0].description}
                       className="rounded-lg shadow-md w-full object-cover aspect-[3/4]"
                     />
-                    <img
-                      src="/design/aadyaposter1.png"
-                      alt="Poster 2"
+                    <DesignImageCard
+                      src={designImages[1].src}
+                      alt={designImages[1].alt}
+                      description={designImages[1].description}
                       className="rounded-lg shadow-md w-full object-cover aspect-[3/4]"
                     />
-                    <img
-                      src="/design/aadyaposter2.png"
-                      alt="Poster 3"
+                    <DesignImageCard
+                      src={designImages[2].src}
+                      alt={designImages[2].alt}
+                      description={designImages[2].description}
                       className="rounded-lg shadow-md w-full object-cover aspect-[3/4]"
                     />
                   </div>
 
                   <div className="flex flex-wrap justify-center md:justify-start gap-6 items-center">
-                    <img
-                      src="/design/predlogos.png"
-                      alt="Logo 1"
+                    <DesignImageCard
+                      src={designImages[3].src}
+                      alt={designImages[3].alt}
+                      description={designImages[3].description}
                       className="h-32 object-contain"
                     />
-                    <img
-                      src="/design/predators.png"
-                      alt="Logo 2"
+                    <DesignImageCard
+                      src={designImages[4].src}
+                      alt={designImages[4].alt}
+                      description={designImages[4].description}
                       className="h-20 object-contain"
                     />
-                    <img
-                      src="/design/dum.png"
-                      alt="Logo 3"
+                    <DesignImageCard
+                      src={designImages[5].src}
+                      alt={designImages[5].alt}
+                      description={designImages[5].description}
                       className="h-32 object-contain"
                     />
                   </div>
