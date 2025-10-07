@@ -69,7 +69,7 @@ export default function Home() {
             </p>
 
             <p className="sm:text-lg md:text-lg lg:text-xl font-plein pt-8 max-w-3xl">
-              Hiii! I am Aadya, an incoming computer science and finance (CFM) student @the University of Waterloo. 
+              Hiii! I am Aadya, a computer science and finance student @ the University of Waterloo. 
               I am a woman of many disciplines, with a passion for creativity and technology. 
 
 
