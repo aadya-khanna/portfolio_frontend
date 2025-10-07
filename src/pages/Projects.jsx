@@ -25,6 +25,15 @@ export default function Home() {
             I like building things
           </h2>
 
+          <Card
+              title="FakeSeek"
+              description="A way to spot deepfakes before they spot you."
+              tech={['Python','TypeScript','React', 'Node.js', 'MongoDB', 'Gemini', 'Tailwind']}
+              github="https://github.com/apun16/FakeSeek%2E"
+              site=""
+              youtube="https://youtu.be/f2p4Meo1NoI" 
+            />
+
             <Card
               title="DoomSpray"
               description="An Arduino hardware solution combined with a personalised blocking algorithm that prevents doom scrolling."
