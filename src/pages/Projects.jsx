@@ -28,7 +28,7 @@ export default function Projects() {
           <div className="sm:w-full md:w-5/12 pt-4 px-4 md:px-0 pb-10">
             {/* What I'm Building Currently Section */}
             <h2 className="text-xl font-gambetta font-medium text-left pb-8">
-             currently / continuously 
+             currently
             </h2>
 
             <div className="pb-10">
