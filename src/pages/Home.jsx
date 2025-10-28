@@ -92,7 +92,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='pt-12'> 
+        <div className='mt-auto'> 
           <Footer />
         </div>
         

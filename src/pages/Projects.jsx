@@ -1,8 +1,8 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Card from '../components/Card';
+import 'remixicon/fonts/remixicon.css';
 
-export default function Home() {
+export default function Projects() {
   return (
     <div className="min-h-screen bg-background text-foreground dark:bg-background-dark dark:text-foreground-dark">
       <Header />
@@ -21,57 +21,72 @@ export default function Home() {
             projects
           </h1>
 
-          <h2 className="text-base sm:text-base md:text-xl xl:text-xl font-gambetta italic pt-1 pb-4">
-            I like building things
+          <h2 className="text-base sm:text-base md:text-xl xl:text-xl font-gambetta italic pt-1 pb-10">
+            I like creating things
           </h2>
 
-          <Card
-              title="FakeSeek"
-              description="A web app that empowers users to protect their digital identity by scanning the web for manipulated media and impersonation risks, and providing insights to enhance their online security."
-              tech={['Python','TypeScript','React', 'Node.js', 'MongoDB', 'Gemini', 'Tailwind']}
-              github="https://github.com/apun16/FakeSeek."
-              site=""
-              youtube="https://youtu.be/f2p4Meo1NoI" 
-            />
+          <div className="sm:w-full md:w-5/12 pt-4 px-4 md:px-0 pb-10">
+            {/* What I'm Building Currently Section */}
+            <h2 className="text-xl font-gambetta font-medium text-left pb-8">
+             currently / continuously 
+            </h2>
 
-            <Card
-              title="DoomSpray"
-              description="An Arduino hardware solution combined with a personalised blocking algorithm that prevents doom scrolling."
-              tech={['React', 'Node.js', 'MongoDB', 'Gemini', 'Tailwind']}
-              github="https://github.com/jam-hacks-doomsprayer"
-              site=""
-              youtube="https://www.youtube.com/watch?v=w-p5MwtdOAA&feature=youtu.be" 
-            />
+            <div className="pb-10">
+              <div className="flex justify-between items-start gap-4">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-lg font-plein font-medium">📊 PRISM</h3>
+                  <div className="flex items-center gap-2 text-xl">
+                    <a href="https://github.com/aadya-khanna/PRISM" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                      <i className="ri-github-line" />
+                    </a>
+                  </div>
+                </div>
+                <h3 className="text-lg font-plein">2025</h3>
+              </div>
+              <p className="text-base font-plein pt-2">portfolio research & insight simulation model</p>
+            </div>
 
-            <Card
-              title="FlareRed"
-              description="Women's travel safety app, disguised as a health application, that provides real-time location sharing to emergency contacts."
-              tech={['Figma', 'Tailwind', 'HTML', 'JavaScript', 'Lottie']}
-              github="https://github.com/aadya-khanna/FlareRed"
-              site="https://flarered.vercel.app"
-              youtube="" 
-            />
+            <p className="text-base font-plein italic pb-10">+ 1 more in ideation</p>
 
-            <Card
-              title="PetIt"
-              description="Interactive pet chatbots that are fun to talk to (and create)!"
-              tech={['Cohere', 'Tailwind', 'HTML', 'Node.js', 'Express']}
-              github="https://github.com/aadya-khanna/underground"
-              site=""
-              youtube="" 
-            />
+            <div className="border-t border-foreground/30 dark:border-foreground-dark/30 pt-10">
+              <h2 className="text-xl font-gambetta font-medium text-left pb-8">
+                previously
+              </h2>
 
-            <Card
-              title="Hazard"
-              description="Web based chrome extension that reads Amazon's products for personal allergens and displays whats consumable for the user."
-              tech={['Figma', 'Lottie', 'HTML/CSS']}
-              github="https://github.com/RussianDraco/hazard"
-              site=""
-              youtube="" 
-            />
+              {/* Financial Literacy App */}
+              <div className="pb-10">
+                <div className="flex justify-between items-start gap-4">
+                  <h3 className="text-lg font-plein font-medium">💰 Financial Literacy App</h3>
+                  <h3 className="text-lg font-plein">2025</h3>
+                </div>
+                <p className="text-base font-plein pt-2">building a financial literacy app for middle-schoolers using ELM</p>
+                <p className="text-base font-plein pt-1 text-foreground/70 dark:text-foreground-dark/70">@ McMaster Start Coding</p>
+              </div>
 
+              {/* Ady's Winter Adventure */}
+              <div className="pb-10">
+                <div className="flex justify-between items-start gap-4">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-lg font-plein font-medium">🛷 Ady's Winter Adventure</h3>
+                    <div className="flex items-center gap-2 text-xl">
+                      <a href="https://stablfoundation.org/NewYearsMystery.html" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                        <i className="ri-global-line" />
+                      </a>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-plein">2024</h3>
+                </div>
+                <p className="text-base font-plein pt-2">story-based game about a Ady's suspicious plans on Christmas</p>
+                <p className="text-base font-plein pt-1 text-foreground/70 dark:text-foreground-dark/70">@ STaBL Foundation</p>
+              </div>
+
+            </div>
+          </div>
         </div>
+
+        <div className="mt-auto">
         <Footer />
+        </div>
       </main>
     </div>
   );

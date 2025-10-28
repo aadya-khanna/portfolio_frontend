@@ -92,12 +92,12 @@ export default function Misc() {
     {
       src: "/design/aadyacollage.png",
       alt: "Make it Move collage",
-      description: "\"Take a break, maybe a trip to the moon will help.\""
+      description: "Take a break, maybe a trip to the moon will help."
     },
     {
       src: "/design/aadyaposter1.png",
       alt: "Poster 1",
-      description: "\"Hire me, I'm an amazing personal photographer!\""
+      description: "Hire me, I'm an amazing personal photographer!"
     },
     {
       src: "/design/aadyaposter2.png",
@@ -265,7 +265,7 @@ export default function Misc() {
                     />
                   </div>
 
-                  <div className="flex flex-wrap justify-center md:justify-start gap-6 items-center">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center justify-items-center">
                     <DesignImageCard
                       src={designImages[3].src}
                       alt={designImages[3].alt}
@@ -276,7 +276,7 @@ export default function Misc() {
                       src={designImages[4].src}
                       alt={designImages[4].alt}
                       description={designImages[4].description}
-                      className="h-20 object-contain"
+                      className="h-32 object-contain"
                     />
                     <DesignImageCard
                       src={designImages[5].src}

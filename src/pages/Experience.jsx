@@ -9,7 +9,7 @@ export default function Experience() {
         <div className="items-center md:items-start text-center justify-center">
           <p className="text-lg sm:text-lg md:text-xl 2xl:text-2xl font-plein">
             <a href="about" className="hover:text-accent"> about </a> | 
-            <a href="projects" className="hovertext-accent"> projects </a> | 
+            <a href="projects" className="hover:text-accent"> projects </a> | 
             <a href="experience" className='text-accent'> experience </a> |
             <a href="misc" className='hover:text-accent'> misc. </a>
           </p>
@@ -87,7 +87,9 @@ export default function Experience() {
           </div>
         </div>
 
-        <Footer />
+        <div className="mt-auto">
+          <Footer />
+        </div>
       </main>
     </div>
   );
