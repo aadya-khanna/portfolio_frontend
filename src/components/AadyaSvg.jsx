@@ -1,12 +1,26 @@
 import aadyaLightSvg from '../assets/aadya_light.svg';
 
-export default function AadyaSvg({ className = '' }) {
+
+export default function AadyaSvg({ className = '' }) 
+{
+    const sentences = ["Hope you're having a great day!", 
+        "Remember to drink water!", 
+        "Don't forget to write me a note!",
+         "MATH135 > MATH137", 
+         "Fun fact: I've travelled to 22 countries!",
+         "I want to go to IKEAAAA",
+         "I'm actually a really funny person",
+         "Is this an implication!?",
+         "WINGSTOP WINGSTOP WINGSTOP",
+         "I want to go to IKEAAAA"]
+
+    const randomSentence = sentences[Math.floor(Math.random() * sentences.length)]
+
     return (
-        <div className="relative inline-block">
-           
+        <div className="relative inline-block"> 
             <div className="absolute top-10 md:top-20 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-14 md:-right-5 bg-background dark:bg-background-dark border-2 border-foreground dark:border-foreground-dark rounded-2xl px-4 py-2 shadow-lg z-10 overflow-visible">
                 <p className="text-sm md:text-base font-plein text-foreground dark:text-foreground-dark whitespace-nowrap">
-                     Hope you're having a great day!
+                 {randomSentence}
                 </p>
                 
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 translate-y-2">
@@ -82,3 +96,5 @@ export default function AadyaSvg({ className = '' }) {
         </div>
     );
   }
+
+  
