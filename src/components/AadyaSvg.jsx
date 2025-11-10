@@ -1,6 +1,17 @@
+import aadyaLightSvg from '../assets/aadya_light.svg';
+
 export default function AadyaSvg({ className = '' }) {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315.85 556.85" className={className}>
+        <>
+            {/* Light mode SVG - hidden in dark mode */}
+            <img 
+                src={aadyaLightSvg} 
+                alt="Aadya" 
+                className={`${className} dark:hidden`}
+            />
+            
+            {/* Dark mode SVG - hidden in light mode */}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315.85 556.85" className={`${className} hidden dark:block`}>
         <g id="face">
         <polygon points="105.75 385.18 123.56 379.5 182.05 378.16 207.76 383.32 156.77 414.6 105.75 385.18" fill="#221f20" stroke="#221f20" strokeMiterlimit="10" strokeWidth="2"/>
         <polygon points="123.86 404.81 123.86 358.5 185.36 358.5 185.36 400.07 185.36 418.62 123.86 418.62 123.86 404.81" fill="#d8b490" stroke="#221f20" strokeMiterlimit="10" strokeWidth="2"/>
@@ -31,5 +42,6 @@ export default function AadyaSvg({ className = '' }) {
         <path d="M155.66,414.7c2.22,3.87,2.72,5.62,5.08.11,2.99-6.97,50.45-44.51,50.96-44.02,0,0,5.34-4.66,12.68-7.24,5.28-1.86,11.02-.47,15.28,3.59,6.85,6.54,18.36,16.23,13.14,24.53-.16.25-.42.56-1.95,1.44-2.62,1.5-11.03-3.38-30.07,6.74-24.37,12.95-46.39,17.56-46.39,17.56,0,0-8.58,2.73-12.19,9.64-1.54,3.76-7.17,4.05-9.66.2-.55-.84-1.17-1.61-1.95-2.16-5.04-3.56-24.41-15.72-62.63-22.5,0,0-8.66-2.22-8.19-14.11.22-5.44,1.76-9.64,2.76-12.41,1.65-4.55,5.49-7.46,9.29-5.21.5.3,1.02.65,1.56,1.08,6.3,4.92,53.05,32.78,58.86,38.79,0,0,3.23,2.9,3.4,3.96Z" fill="#e3a0b0" stroke="#221f20" strokeMiterlimit="10" strokeWidth="2"/>
         <path d="M134.29,403.34c-1.51-.14-2.72,1.24-2.36,2.72.55,2.26,1.14,5.66,1.12,9.79-.04,6.94,1.18,60.67,1.43,71.22.02,1,.84,1.79,1.84,1.79h3.88c1.17,0,2.06-1.06,1.86-2.21-.99-5.69-3.34-21.53-2.22-37.78,1.48-21.43-1.17-38.92-2.03-43.84-.14-.82-.81-1.44-1.64-1.52l-1.87-.17Z" fill="#fff" stroke="#221f20" strokeMiterlimit="10" strokeWidth="2"/>
         <path d="M181.73,402.96c1.04-.09,1.93.73,1.92,1.77l-.56,81.35c-.69,4.1-4.49,3.04-4.49,3.04-3.17-3.94-1.17-73.32-.83-84.34.03-.84.68-1.53,1.52-1.6l2.45-.22Z" fill="#fff" stroke="#221f20" strokeMiterlimit="10" strokeWidth="2"/></g></svg>
+        </>
     );
   }

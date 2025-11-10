@@ -76,13 +76,19 @@ export default function Home() {
             </p>
             
             <p className="sm:text-lg md:text-lg lg:text-xl font-plein pt-8 max-w-3xl">
-              I am currently learning DSA, polishing my full-stack skills, and exploring the world of fintech. 
+              I am currently shipping three projects, all to do with fin-tech and quant finance.  
+              Check out my projects page to see what I'm working on. 
               Feel free to connect with me; I love a good chat!
       
             </p>
 
-            <div className="mb-8 pt-20 w-full flex justify-center md:justify-start">
-              <NowPlaying />
+            <div className="mb-8 md:pt-20 w-full flex flex-col items-center md:items-start">
+              <div className="md:hidden w-full flex justify-center mb-6">
+                <AadyaSvg className="w-[40vw] max-w-xs" />
+              </div>
+              <div className="w-full flex justify-center md:justify-start">
+                <NowPlaying />
+              </div>
             </div>
 
           </div>
