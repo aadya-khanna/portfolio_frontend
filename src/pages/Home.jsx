@@ -82,9 +82,9 @@ export default function Home() {
       
             </p>
 
-            <div className="mb-8 md:pt-20 w-full flex flex-col items-center md:items-start">
+            <div className="mb-8 pt-10 md:pt-20 w-full flex flex-col items-center md:items-start">
               <div className="md:hidden w-full flex justify-center mb-6">
-                <AadyaSvg className="w-[40vw] max-w-xs" />
+                <AadyaSvg className="w-[50vw] max-w-xs" />
               </div>
               <div className="w-full flex justify-center md:justify-start">
                 <NowPlaying />
