@@ -53,6 +53,22 @@ export default function Projects() {
                 previously
               </h2>
 
+               {/* Portfolio Advisor */}
+               <div className="pb-10">
+              <div className="flex justify-between items-start gap-4">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-lg font-plein font-medium"> 📈 Optimised Portfolio Advisor</h3>
+                  <div className="flex items-center gap-2 text-xl">
+                    <a href="https://github.com/aadya-khanna/cfm-team-assignment" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                      <i className="ri-github-line" />
+                    </a>
+                  </div>
+                </div>
+                <h3 className="text-lg font-plein">2025</h3>
+              </div>
+              <p className="text-base font-plein pt-2"> making you rich by beating the benchmark</p>
+            </div>
+
               {/* Financial Literacy App */}
               <div className="pb-10">
                 <div className="flex justify-between items-start gap-4">
