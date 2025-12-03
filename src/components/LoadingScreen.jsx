@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import AadyaAvatar from './AadyaAvatar';
 
 // Status messages that rotate every second
@@ -98,35 +98,18 @@ const LoadingScreen = () => {
     return () => clearInterval(messageInterval);
   }, [isLoading, isFadingOut]);
 
-  // API Polling Logic
+  // Fixed Timeout Logic (7.5 seconds, matching 7-8 seconds requested)
   useEffect(() => {
     if (!isLoading || isFadingOut) return;
 
-    let pollInterval;
-
-    const pollApi = async () => {
-      try {
-        const response = await fetch('/api/currently-listening');
-        if (response.ok) {
-          // Backend API woke up (200 OK)
-          
-          // Immediately start fade out
-          setIsFadingOut(true); 
-          clearInterval(pollInterval);
-        }
-      } catch (error) {
-        // Log/handle error, but keep polling if connection fails (backend is offline)
-        // console.error('Polling failed, retrying...', error);
-      }
-    };
-
-    // Start initial poll immediately, then set up continuous polling every 1.1 seconds (1000-1200ms range)
-    pollApi(); 
-    pollInterval = setInterval(pollApi, 1100); 
+    const timeout = setTimeout(() => {
+        // Start fade out after 7.5 seconds
+        setIsFadingOut(true);
+    }, 7500);
 
     // Cleanup function
     return () => {
-      clearInterval(pollInterval);
+      clearTimeout(timeout);
     };
   }, [isLoading, isFadingOut]);
   
