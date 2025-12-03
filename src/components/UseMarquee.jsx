@@ -15,7 +15,7 @@ export default function useMarquee(text) {
       const containerWidth = containerRef.current.offsetWidth;
       const textWidth = textRef.current.scrollWidth;
       const overflow = textWidth > containerWidth;
-      console.log('useMarquee:', { text, containerWidth, textWidth, overflow });
+     // console.log('useMarquee:', { text, containerWidth, textWidth, overflow });
       setShouldMarquee(overflow);
     };
 
