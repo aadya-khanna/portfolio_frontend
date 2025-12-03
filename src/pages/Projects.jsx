@@ -92,7 +92,7 @@ export default function Projects() {
                   </div>
                   <h3 className="text-lg font-plein">2024</h3>
                 </div>
-                <p className="text-base font-plein pt-2">story-based game about a Ady's suspicious plans on New Year's Eve</p>
+                <p className="text-base font-plein pt-2">story-based game about Ady's suspicious plans on New Year's Eve</p>
                 <p className="text-base font-plein pt-1 text-foreground/70 dark:text-foreground-dark/70">@ STaBL Foundation</p>
               </div>
 

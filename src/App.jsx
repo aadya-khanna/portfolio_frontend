@@ -6,11 +6,13 @@ import Misc from './pages/Miscellaneous.jsx'
 import StickyPage from './pages/StickyPage.jsx'
 import Gallery from './pages/Gallery.jsx'
 import CustomCursor from './components/CustomCursor';
+import LoadingScreen from './components/LoadingScreen';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground dark:bg-background-dark dark:text-foreground-dark transition-colors duration-500 cursor-none">
-      <CustomCursor />   
+      <LoadingScreen />
+      <CustomCursor />
       
       <Routes>
         <Route path="/" element={<Navigate to="/about" replace />} />
