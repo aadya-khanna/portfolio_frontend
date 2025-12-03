@@ -30,7 +30,7 @@ const styles = {
   },
   avatar: {
     borderRadius: '50%',
-    backgroundColor: 'var(--bg)',
+    backgroundColor: 'var(--bg-dark)', // Force dark background for avatar container
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -116,7 +116,7 @@ const TrackSelectionScreen = () => {
   });
   
   return (
-    <div className="bg-background dark:bg-background-dark" style={styles.loader(isFadingOut)}>
+    <div className="bg-background-dark text-foreground-dark" style={styles.loader(isFadingOut)}>
       <h1 style={headerStyle}>pick your jam</h1>
       
       <div style={styles.avatarContainer}>
@@ -133,7 +133,7 @@ const TrackSelectionScreen = () => {
             style={buttonStyle(track)}
             onClick={() => handleSelectTrack(track)}
           >
-            {track.name}
+            {`${track.songName} - ${track.artist}`}
           </button>
         ))}
       </div>

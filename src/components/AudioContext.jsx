@@ -5,18 +5,33 @@ const AudioContext = createContext(null);
 export const useAudio = () => useContext(AudioContext);
 
 const TRACKS = [
-    { id: 1, name: 'Early Summer by Ryo Fukui', src: 'music/ryofukui.mp3' },
-    { id: 2, name: 'Kiss of Life by Sade', src: 'music/sade.mp3' },
-    { id: 3, name: 'Desafinado by Getz, Gilberto', src: 'music/stangetz.mp3' },
+    { id: 1, songName: 'Early Summer', artist: 'Ryo Fukui', albumCover: '/albums/ryofukui.jpeg', src: 'music/ryofukui.mp3' },
+    { id: 2, songName: 'Kiss of Life', artist: 'Sade', albumCover: '/albums/sade.jpeg', src: 'music/sade.mp3' },
+    { id: 3, songName: 'Desafinado', artist: 'Getz & Gilberto', albumCover: '/albums/getzgilberto.jpg', src: 'music/stangetz.mp3' },
 ];
 
 export const AudioProvider = ({ children }) => {
-    // Function to initialize selectedTrack from localStorage
+    const initialIsGateDismissed = () => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('isGateDismissed') === 'true';
+        }
+        return false;
+    };
+
+    // Function to initialize selectedTrack
     const initialTrack = () => {
         if (typeof window !== 'undefined') {
-            const savedTrackId = localStorage.getItem('selectedTrackId');
-            if (savedTrackId) {
-                return TRACKS.find(t => String(t.id) === savedTrackId) || null;
+            const gateDismissed = initialIsGateDismissed();
+            
+            if (gateDismissed) {
+                // If the gate was already dismissed, restore the track from history to avoid re-selection
+                const savedTrackId = localStorage.getItem('selectedTrackId');
+                if (savedTrackId) {
+                    return TRACKS.find(t => String(t.id) === savedTrackId) || null;
+                }
+            } else {
+                // If the gate was NOT dismissed (first load), force selection
+                localStorage.removeItem('selectedTrackId');
             }
         }
         return null;
@@ -24,12 +39,21 @@ export const AudioProvider = ({ children }) => {
 
     const initialIsPlaying = () => {
         if (typeof window !== 'undefined') {
-            const savedIsPlaying = localStorage.getItem('isPlaying');
-            return savedIsPlaying === 'true'; // localStorage stores strings
+            // Since we force track selection/gate access based on persistence, only restore isPlaying if gate was dismissed AND a track was loaded
+            const gateDismissed = initialIsGateDismissed();
+            const trackExists = !!localStorage.getItem('selectedTrackId'); // Check if selectedTrackId exists before restoration
+            
+            if (gateDismissed && trackExists) {
+                const savedIsPlaying = localStorage.getItem('isPlaying');
+                return savedIsPlaying === 'true';
+            }
+            
+            localStorage.setItem('isPlaying', 'false');
         }
         return false;
     };
-
+    
+    const [isGateDismissed, setIsGateDismissed] = useState(initialIsGateDismissed);
     const [isPlaying, setIsPlaying] = useState(initialIsPlaying);
     const [selectedTrack, setSelectedTrack] = useState(initialTrack);
     const audioRef = useRef(new Audio());
@@ -94,12 +118,23 @@ export const AudioProvider = ({ children }) => {
     }, [selectedTrack]);
 
 
+    // Persist isGateDismissed state to localStorage
+    useEffect(() => {
+        localStorage.setItem('isGateDismissed', isGateDismissed);
+        
+        // If the gate is dismissed, we should probably check if there is a selected track.
+        // If the user reloads and isGateDismissed is true, but selectedTrack is null (due to initialTrack logic),
+        // they will see the TrackSelectionScreen. This is the desired 'force select' behavior.
+    }, [isGateDismissed]);
+
+
     // Persist isPlaying state to localStorage
     useEffect(() => {
+        // We keep isPlaying persistence for runtime state management, but ensure it's false on initial load
+        // via initialIsPlaying logic (modified above)
         if (selectedTrack) {
             localStorage.setItem('isPlaying', isPlaying);
         } else {
-            // Ensure we don't try to play if no track is selected
             localStorage.setItem('isPlaying', 'false');
         }
     }, [isPlaying, selectedTrack]);
@@ -140,12 +175,18 @@ export const AudioProvider = ({ children }) => {
         }
     };
 
+    const dismissGate = () => {
+        setIsGateDismissed(true);
+    };
+
     const contextValue = {
         TRACKS,
         selectedTrack,
         isPlaying,
         selectTrack,
         togglePlay,
+        isGateDismissed, // Expose new state
+        dismissGate,    // Expose new function
     };
 
     return (

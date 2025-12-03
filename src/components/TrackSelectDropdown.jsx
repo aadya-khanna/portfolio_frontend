@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { useAudio } from './AudioContext';
 
 const TrackSelectDropdown = () => {
-    const { TRACKS, selectedTrack, selectTrack } = useAudio();
+    const { TRACKS, selectedTrack, selectTrack, isGateDismissed } = useAudio();
     const [isOpen, setIsOpen] = useState(false);
+    
+    // Do not render the component until the gate is dismissed AND a track is selected
+    if (!isGateDismissed || !selectedTrack) {
+        return null;
+    }
     
     // Toggle dropdown visibility for touch devices
     const toggleDropdown = () => {
@@ -15,9 +20,9 @@ const TrackSelectDropdown = () => {
         selectTrack(track);
         setIsOpen(false);
     };
-    
-    // Determine the name to display in the header (Only song name or 'Music')
-    const currentTrackName = selectedTrack ? selectedTrack.name : 'Music';
+
+    // Determine the name to display in the header (Song name - Artist)
+    const currentTrackName = `${selectedTrack.songName} - ${selectedTrack.artist}`;
 
     // Tailwind classes for dropdown menu positioning and styling
     const menuClasses = `
@@ -41,7 +46,7 @@ const TrackSelectDropdown = () => {
     // and rely on onClick (toggleDropdown) for touch devices. 
     
     return (
-        <div 
+        <div
             className="relative inline-block text-left group"
         >
             <div>
@@ -58,7 +63,7 @@ const TrackSelectDropdown = () => {
                 </button>
             </div>
 
-            <div 
+            <div
                 className={menuClasses}
                 style={{ transformOrigin: 'top left' }}
             >
@@ -73,7 +78,7 @@ const TrackSelectDropdown = () => {
                             color: selectedTrack && selectedTrack.id === track.id ? 'var(--bg)' : undefined,
                         }}
                     >
-                        {track.name}
+                        {`${track.songName} - ${track.artist}`}
                     </div>
                 ))}
             </div>
