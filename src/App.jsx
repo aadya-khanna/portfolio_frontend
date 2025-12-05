@@ -65,7 +65,7 @@ function AppContent() {
   const { isGateDismissed } = useAudio();
   
   // Conditionally force dark background if the gate is not dismissed yet
-  const wrapperClasses = `min-h-screen transition-colors duration-500 cursor-none ${
+  const wrapperClasses = `min-h-screen transition-colors duration-500 ${
     isGateDismissed
       ? 'bg-background text-foreground dark:bg-background-dark dark:text-foreground-dark'
       : 'bg-background-dark text-foreground-dark' // Force dark mode colors
